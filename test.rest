@@ -20,7 +20,7 @@ Content-Type: application/json
 
 {
     "email": "nooraldeen.aloudat@gmail.com",
-    "otp": "237440"
+    "otp": "378428"
 }
 
 ### Request a new student OTP
@@ -48,7 +48,7 @@ Content-Type: application/json
 
 {
     "email": "noor.feraas@gmail.com",
-    "otp": "698346"
+    "otp": "421101"
 }
 
 ### Request a new company OTP
@@ -69,8 +69,6 @@ Content-Type: application/json
     "password": "123456789Nn@"
 }
 
-###
-
 ### Test Login for Company
 POST http://localhost:8000/auth/login/
 Content-Type: application/json
@@ -82,7 +80,7 @@ Content-Type: application/json
 
 ### Is the user verified?
 GET http://localhost:8000/auth/check_verification/
-Authorization: Token 151eadd7f9f619348906cbde8a40ac98cdebb06b
+Authorization: Token 82bf81be1785f6fb61e1492d4d215485d34fff42
 
 ### Refresh Access Token
 POST http://localhost:8000/auth/refresh_token/
@@ -99,9 +97,9 @@ Authorization: Token 503b542bfd5d7550d8601e01eb1c4a17ed0bf6d3
 
 ### Get user data
 GET http://localhost:8000/auth/user_data/
-Authorization: Token b25ae0a69d62806f063eeba8c132847675c4c5f4
+Authorization: Token 82bf81be1785f6fb61e1492d4d215485d34fff42
 
 ### logout
 POST http://localhost:8000/auth/logout/
 Content-Type: application/json
-Authorization: Token 151eadd7f9f619348906cbde8a40ac98cdebb06b
+Authorization: Token 079bc51604a45d828a40ac0b198ee3bd6acd35a4
