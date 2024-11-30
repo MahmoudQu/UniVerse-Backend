@@ -1,8 +1,10 @@
 from django.contrib.auth import authenticate
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
+from rest_framework_simplejwt.tokens import RefreshToken
 from apps.accounts.serializers import UserSerializer
+from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken
+from django.contrib.auth import get_user_model
 
 
 def authenticate_user(email, password):
@@ -40,10 +42,23 @@ def handle_login(request):
 
 def handle_logout(request):
     try:
-        # Assuming the refresh token is sent in the request data
         refresh_token = request.data.get("refresh")
         token = RefreshToken(refresh_token)
-        token.blacklist()  # Blacklist the refresh token
+
+        # Check if the token is already blacklisted
+        if BlacklistedToken.objects.filter(token__jti=token['jti']).exists():
+            return Response({"detail": "Token has already been blacklisted."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Blacklist the refresh token
+        token.blacklist()
+
+        # Retrieve the user and update the is_logged_in field
+        user_id = token['user_id']
+        User = get_user_model()
+        user = User.objects.get(id=user_id)
+        user.is_logged_in = False
+        user.save(update_fields=['is_logged_in'])
+
         return Response({"detail": "Logout successful."}, status=status.HTTP_205_RESET_CONTENT)
     except Exception as e:
         return Response({"detail": "Logout failed."}, status=status.HTTP_400_BAD_REQUEST)
