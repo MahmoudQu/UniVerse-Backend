@@ -1,72 +1,65 @@
 from django.contrib.auth import authenticate
-from rest_framework.authtoken.models import Token
-from .token_services import generate_refresh_token
 from rest_framework.response import Response
 from rest_framework import status
-from apps.accounts.models import RefreshToken
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 from apps.accounts.serializers import UserSerializer
 
 
 def authenticate_user(email, password):
     user = authenticate(email=email, password=password)
     if user:
-        token, _ = Token.objects.get_or_create(user=user)
-        return user, token.key
-    return None, None
+        refresh = RefreshToken.for_user(user)
+        access_token = str(refresh.access_token)
+        refresh_token = str(refresh)
+        return user, access_token, refresh_token
+    return None, None, None
 
 
 def handle_login(request):
     email = request.data.get('email')
     password = request.data.get('password')
-
-    if not email or not password:
-        return Response(
-            {"detail": "Email and password are required."},
-            status=status.HTTP_400_BAD_REQUEST,
-        )
-
-    user, token = authenticate_user(email, password)
-
-    if user is not None:
+    user, access_token, refresh_token = authenticate_user(email, password)
+    if user:
         user.is_logged_in = True
         user.save(update_fields=['is_logged_in'])
-        user_type = 'student' if hasattr(user, 'student') else 'company' if hasattr(
-            user, 'company') else 'unknown'
-        refresh_token = generate_refresh_token(user)
-        serializer = UserSerializer(user, context={'request': request})
         return Response(
             {
-                "token": token,
-                "refresh_token": refresh_token,
-                "user_type": user_type,
+                'user': UserSerializer(user).data,
+                'access_token': access_token,
+                'refresh_token': refresh_token,
                 "is_logged_in": user.is_logged_in,
-                "user": serializer.data
             },
-            status=status.HTTP_200_OK,
+            status=status.HTTP_200_OK
         )
-    return Response(
-        {"detail": "Invalid email or password."},
-        status=status.HTTP_401_UNAUTHORIZED,
-    )
+    else:
+        return Response(
+            {"detail": "Invalid credentials."},
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 def handle_logout(request):
-    user = request.user
-    user.is_logged_in = False
-    user.save(update_fields=['is_logged_in'])
-    Token.objects.filter(user=user).delete()
-    RefreshToken.objects.filter(user=user).delete()
-
-    return Response({"detail": "Logged out successfully."}, status=status.HTTP_200_OK)
+    try:
+        # Assuming the refresh token is sent in the request data
+        refresh_token = request.data.get("refresh")
+        token = RefreshToken(refresh_token)
+        token.blacklist()  # Blacklist the refresh token
+        return Response({"detail": "Logout successful."}, status=status.HTTP_205_RESET_CONTENT)
+    except Exception as e:
+        return Response({"detail": "Logout failed."}, status=status.HTTP_400_BAD_REQUEST)
 
 
 def check_user_verification(request):
     user = request.user
+    user_type = 'student' if hasattr(user, 'student') else 'company' if hasattr(
+        user, 'company') else 'unknown'
+    email = user.email
+    is_logged_in = user.is_logged_in
     if hasattr(user, 'student'):
         is_verified = user.student.is_verified
     elif hasattr(user, 'company'):
         is_verified = user.company.is_verified
     else:
-        return Response({"detail": "User profile not found."}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"detail": "Invalid user type."}, status=status.HTTP_404_NOT_FOUND)
 
-    return Response({"is_verified": is_verified}, status=status.HTTP_200_OK)
+    return Response({"is_verified": is_verified, "is_logged_in": is_logged_in, "user_type": user_type, "email": email}, status=status.HTTP_200_OK)

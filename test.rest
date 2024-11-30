@@ -20,7 +20,7 @@ Content-Type: application/json
 
 {
     "email": "nooraldeen.aloudat@gmail.com",
-    "otp": "378428"
+    "otp": "952170"
 }
 
 ### Request a new student OTP
@@ -80,26 +80,34 @@ Content-Type: application/json
 
 ### Is the user verified?
 GET http://localhost:8000/auth/check_verification/
-Authorization: Token 82bf81be1785f6fb61e1492d4d215485d34fff42
+Authorization: Bearer 1fa4024d187fe365dae033d8c87d327001a75460
 
 ### Refresh Access Token
 POST http://localhost:8000/auth/refresh_token/
 Content-Type: application/json
-Authorization: Token 151eadd7f9f619348906cbde8a40ac98cdebb06b
 
 {
-    "refresh_token": "0a9e66f551ca5da0799b574912960975e8713791"
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMzAzNDEzNSwiaWF0IjoxNzMyOTQ3NzM1LCJqdGkiOiJmMmU4MmQyNjdhY2Q0ODNhODAxOGM2ODgzODIzMWY1YiIsInVzZXJfaWQiOjF9.DQQ0A6ZNHIirzvlQOf7dogRt9LCgH7za32fOCyGnT3w"
 }
 
 ### Test auth api call
 GET http://localhost:8000/auth/api_call_success/
-Authorization: Token 503b542bfd5d7550d8601e01eb1c4a17ed0bf6d3
+Authorization: Bearer 503b542bfd5d7550d8601e01eb1c4a17ed0bf6d3
 
 ### Get user data
 GET http://localhost:8000/auth/user_data/
-Authorization: Token 82bf81be1785f6fb61e1492d4d215485d34fff42
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyOTQ0ODE4LCJpYXQiOjE3MzI5NDQ1MTgsImp0aSI6IjFlYzFhZjFiMTRmNjQwMGM5ZTIwYzNlZTM3ZjRlYWFkIiwidXNlcl9pZCI6MX0.QR2x1tE64X3bC2jdVegcf3Zgk36b5_L49k0JnBvsQPs
+
+### Check the user's token
+GET http://localhost:8000/auth/check_token/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyOTQ1OTY1LCJpYXQiOjE3MzI5NDU2NjUsImp0aSI6IjA5NWYwOWJjZmJmNzRhN2VhMjlhMjljY2RlYjcxYzU0IiwidXNlcl9pZCI6MX0.JW4F0n5QuMaSOm9LV9liZ6Nj73fJpLsb-b3HYS87BR0
+Content-Type: application/json
 
 ### logout
 POST http://localhost:8000/auth/logout/
 Content-Type: application/json
-Authorization: Token 079bc51604a45d828a40ac0b198ee3bd6acd35a4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyOTUxODU3LCJpYXQiOjE3MzI5NTE1NTcsImp0aSI6IjZkYzQ1MDhiNmQ0ZTQ0MWZiYThlY2VlMDlhYmYwMGZmIiwidXNlcl9pZCI6MX0.OYvSme6jPcEFMTCq_9gBPOgWkY9luLGMfepAgRm0ZAU
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMzAzNzk1NywiaWF0IjoxNzMyOTUxNTU3LCJqdGkiOiIwOGRiOGQ1NWMzMjg0ZmQ2YjY2MmUzN2Y1MmIzMzY0NiIsInVzZXJfaWQiOjF9.rjFp2vqGqZo3f6ZR_1BFJM-nN3fFBEUoUiFOwkEPuKk"
+}

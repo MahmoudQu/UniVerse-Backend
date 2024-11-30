@@ -10,7 +10,8 @@ from .views import (
     LogoutView,
     RefreshTokenView,
     CheckVerificationView,
-    GetUserDataView
+    GetUserDataView,
+    CheckTokenView,
 )
 
 urlpatterns = [
@@ -30,5 +31,6 @@ urlpatterns = [
     path('check_verification/', CheckVerificationView.as_view(),
          name='check_verification'),
     path('user_data/', GetUserDataView.as_view(),
-         name='user_data')
+         name='user_data'),
+    path('check_token/', CheckTokenView.as_view(), name='check_token'),
 ]

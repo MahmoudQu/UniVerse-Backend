@@ -1,12 +1,9 @@
-from rest_framework import generics, permissions, status
-from rest_framework.response import Response
+from rest_framework import generics, permissions
 from rest_framework.views import APIView
-from apps.accounts.models import RefreshToken
 from apps.students.serializers import StudentSerializer
 from apps.companies.serializers import CompanySerializer
 from .services.main import *
 from .services.token_services import refresh_user_token
-from rest_framework.authtoken.models import Token
 
 
 class StudentSignupView(generics.CreateAPIView):
@@ -68,7 +65,7 @@ class LogoutView(APIView):
 
 
 class RefreshTokenView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     def post(self, request, *args, **kwargs):
         return refresh_user_token(request)
@@ -86,3 +83,10 @@ class GetUserDataView(APIView):
 
     def get(self, request, *args, **kwargs):
         return get_user_data(request)
+
+
+class CheckTokenView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        return validate_user_token(request)
