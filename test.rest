@@ -1,0 +1,107 @@
+### Truncate Tables
+POST http://localhost:8000/truncate-tables/
+Content-Type: application/json
+
+
+### Signup a new student
+POST http://localhost:8000/auth/student/signup/
+Content-Type: application/json
+
+{
+    "first_name": "Nooraldeen",
+    "last_name": "Aloudat",
+    "email": "nooraldeen.aloudat@gmail.com",
+    "password": "123456789Nn@"
+}
+
+### Verify OTP for Student
+POST http://localhost:8000/auth/student/verify_otp/
+Content-Type: application/json
+
+{
+    "email": "nooraldeen.aloudat@gmail.com",
+    "otp": "237440"
+}
+
+### Request a new student OTP
+POST http://localhost:8000/auth/student/request_new_otp/
+Content-Type: application/json
+
+{
+    "email": "nooraldeen.aloudat@gmail.com"
+}
+
+
+### Signup a new company
+POST http://localhost:8000/auth/company/signup/
+Content-Type: application/json
+
+{
+    "name": "testcompany",
+    "password": "testpassword",
+    "email": "noor.feraas@gmail.com"
+}
+
+### Test Verify OTP for Company
+POST http://localhost:8000/auth/company/verify_otp/
+Content-Type: application/json
+
+{
+    "email": "noor.feraas@gmail.com",
+    "otp": "698346"
+}
+
+### Request a new company OTP
+POST http://localhost:8000/auth/company/request_new_otp/
+Content-Type: application/json
+
+{
+    "email": "noor.feraas@gmail.com"
+}
+
+
+### Test Login for Student
+POST http://localhost:8000/auth/login/
+Content-Type: application/json
+
+{
+    "email": "nooraldeen.aloudat@gmail.com",
+    "password": "123456789Nn@"
+}
+
+###
+
+### Test Login for Company
+POST http://localhost:8000/auth/login/
+Content-Type: application/json
+
+{
+    "email": "noor.feraas@gmail.com",
+    "password": "testpassword"
+}
+
+### Is the user verified?
+GET http://localhost:8000/auth/check_verification/
+Authorization: Token 151eadd7f9f619348906cbde8a40ac98cdebb06b
+
+### Refresh Access Token
+POST http://localhost:8000/auth/refresh_token/
+Content-Type: application/json
+Authorization: Token 151eadd7f9f619348906cbde8a40ac98cdebb06b
+
+{
+    "refresh_token": "0a9e66f551ca5da0799b574912960975e8713791"
+}
+
+### Test auth api call
+GET http://localhost:8000/auth/api_call_success/
+Authorization: Token 503b542bfd5d7550d8601e01eb1c4a17ed0bf6d3
+
+### Get user data
+GET http://localhost:8000/auth/user_data/
+Authorization: Token b25ae0a69d62806f063eeba8c132847675c4c5f4
+
+### logout
+POST http://localhost:8000/auth/logout/
+Content-Type: application/json
+Authorization: Token 151eadd7f9f619348906cbde8a40ac98cdebb06b
