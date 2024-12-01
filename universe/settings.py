@@ -44,11 +44,12 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.authentication',
     'corsheaders',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
@@ -64,10 +65,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'apps.authentication.middleware.JWTCookieMiddleware',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+]
+CORS_ALLOW_CREDENTIALS = True
+# SESSION_COOKIE_SECURE = False  # True if using HTTPS
+# CSRF_COOKIE_SECURE = False  # True if using HTTPS
+
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+    "cookie",
 ]
 
 ROOT_URLCONF = 'universe.urls'

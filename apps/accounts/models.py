@@ -44,22 +44,22 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         self.save()
 
 
-class RefreshToken(models.Model):
-    user = models.OneToOneField(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    key = models.CharField(max_length=40, unique=True)
-    created = models.DateTimeField(auto_now_add=True)
-    expiration = models.DateTimeField()
+# class RefreshToken(models.Model):
+#     user = models.OneToOneField(
+#         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+#     key = models.CharField(max_length=40, unique=True)
+#     created = models.DateTimeField(auto_now_add=True)
+#     expiration = models.DateTimeField()
 
-    def save(self, *args, **kwargs):
-        if not self.key:
-            self.key = self.generate_key()
-        if not self.expiration:
-            self.expiration = timezone.now() + timezone.timedelta(days=7)
-        super().save(*args, **kwargs)
+#     def save(self, *args, **kwargs):
+#         if not self.key:
+#             self.key = self.generate_key()
+#         if not self.expiration:
+#             self.expiration = timezone.now() + timezone.timedelta(days=7)
+#         super().save(*args, **kwargs)
 
-    def generate_key(self):
-        return binascii.hexlify(os.urandom(20)).decode()
+#     def generate_key(self):
+#         return binascii.hexlify(os.urandom(20)).decode()
 
-    def __str__(self):
-        return f"RefreshToken(key={self.key}, user={self.user})"
+#     def __str__(self):
+#         return f"RefreshToken(key={self.key}, user={self.user})"
