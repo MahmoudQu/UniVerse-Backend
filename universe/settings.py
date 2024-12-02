@@ -39,10 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'apps',
     'apps.students',
     'apps.companies',
     'apps.accounts',
     'apps.authentication',
+    'apps.universities',
+    'apps.jobs',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
 ]
@@ -110,7 +113,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'UniVerse',
         'USER': 'postgres',
-        'PASSWORD': '077520520Nn@',
+        'PASSWORD': 'MAH141078',
         'HOST': 'localhost',
         'PORT': '5432'
     }
