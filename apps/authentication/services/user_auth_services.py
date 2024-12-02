@@ -24,12 +24,22 @@ def handle_login(request):
     if user:
         user.is_logged_in = True
         user.save(update_fields=['is_logged_in'])
+
+        # Determine user_type based on related profiles
+        if hasattr(user, 'student'):
+            user_type = 'student'
+        elif hasattr(user, 'company'):
+            user_type = 'company'
+        else:
+            user_type = 'unknown'
+
         return Response(
             {
                 'user': UserSerializer(user).data,
                 'access_token': access_token,
                 'refresh_token': refresh_token,
-                "is_logged_in": user.is_logged_in,
+                'is_logged_in': user.is_logged_in,
+                'user_type': user_type,
             },
             status=status.HTTP_200_OK
         )
@@ -52,10 +62,8 @@ def handle_logout(request):
         # Blacklist the refresh token
         token.blacklist()
 
-        # Retrieve the user and update the is_logged_in field
-        user_id = token['user_id']
-        User = get_user_model()
-        user = User.objects.get(id=user_id)
+        # Retrieve the user from request.user and update the is_logged_in field
+        user = request.user
         user.is_logged_in = False
         user.save(update_fields=['is_logged_in'])
 

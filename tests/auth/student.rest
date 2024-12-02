@@ -1,0 +1,36 @@
+### Signup a new student
+POST http://localhost:8000/auth/student/signup/
+Content-Type: application/json
+
+{
+    "first_name": "Nooraldeen",
+    "last_name": "Aloudat",
+    "email": "nooraldeen.aloudat@gmail.com",
+    "password": "123456789Nn@"
+}
+
+### Verify OTP for Student
+POST http://localhost:8000/auth/student/verify_otp/
+Content-Type: application/json
+
+{
+    "email": "nooraldeen.aloudat@gmail.com",
+    "otp": "952170"
+}
+
+### Request a new student OTP
+POST http://localhost:8000/auth/student/request_new_otp/
+Content-Type: application/json
+
+{
+    "email": "nooraldeen.aloudat@gmail.com"
+}
+
+### Test Login for Student
+POST http://localhost:8000/auth/login/
+Content-Type: application/json
+
+{
+    "email": "nooraldeen.aloudat@gmail.com",
+    "password": "123456789Nn@"
+}

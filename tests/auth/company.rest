@@ -1,0 +1,35 @@
+### Signup a new company
+POST http://localhost:8000/auth/company/signup/
+Content-Type: application/json
+
+{
+    "name": "testcompany",
+    "password": "testpassword",
+    "email": "noor.feraas@gmail.com"
+}
+
+### Test Verify OTP for Company
+POST http://localhost:8000/auth/company/verify_otp/
+Content-Type: application/json
+
+{
+    "email": "noor.feraas@gmail.com",
+    "otp": "421101"
+}
+
+### Request a new company OTP
+POST http://localhost:8000/auth/company/request_new_otp/
+Content-Type: application/json
+
+{
+    "email": "noor.feraas@gmail.com"
+}
+
+### Test Login for Company
+POST http://localhost:8000/auth/login/
+Content-Type: application/json
+
+{
+    "email": "noor.feraas@gmail.com",
+    "password": "testpassword"
+}
