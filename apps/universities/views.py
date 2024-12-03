@@ -1,31 +1,37 @@
-from django.shortcuts import render
 from rest_framework import generics
-from .models import University, Major
-from .serializers import UniversitySerializer, MajorSerializer
+from .models import University, Department
+from .serializers import UniversitySerializer, DepartmentSerializer
+from rest_framework import generics, permissions
+from permissions.admin_permission import IsAdminUser
 
 
 class UniversityListCreateView(generics.ListCreateAPIView):
+    permission_classes = [IsAdminUser, permissions.IsAuthenticated]
     queryset = University.objects.all()
     serializer_class = UniversitySerializer
 
 
 class UniversityDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUser, permissions.IsAuthenticated]
     queryset = University.objects.all()
     serializer_class = UniversitySerializer
 
 
-class MajorListCreateView(generics.ListCreateAPIView):
-    queryset = Major.objects.all()
-    serializer_class = MajorSerializer
+class DepartmentListCreateView(generics.ListCreateAPIView):
+    permission_classes = [IsAdminUser, permissions.IsAuthenticated]
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
 
 
-class MajorDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Major.objects.all()
-    serializer_class = MajorSerializer
+class DepartmentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAdminUser, permissions.IsAuthenticated]
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
 
-class MajorsByUniversityView(generics.ListAPIView):
-    serializer_class = MajorSerializer
+class DepartmentsByUniversityView(generics.ListAPIView):
+    permission_classes = [IsAdminUser, permissions.IsAuthenticated]
+    serializer_class = DepartmentSerializer
     
     def get_queryset(self):
         university_id = self.kwargs['university_id']
-        return Major.objects.filter(university_id=university_id)
+        return Department.objects.filter(university_id=university_id)

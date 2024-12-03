@@ -1,8 +1,14 @@
+# apps/students/urls.py
 from django.urls import path
-from .views import signup_student, verify_otp_student, request_new_student_otp
+from .views import (
+    StudentSignupView,
+    StudentVerifyOTPView,
+    StudentRequestNewOTPView,
+)
 
 urlpatterns = [
-    path('signup/', signup_student, name='signup_student'),
-    path('verify-otp/', verify_otp_student, name='verify_otp_student'),
-    path('request-new-otp/', request_new_student_otp, name='request_new_student_otp'),
+    path('signup/', StudentSignupView.as_view(), name='student_signup'),
+    path('verify_otp/', StudentVerifyOTPView.as_view(), name='student_verify_otp'),
+    path('request_new_otp/', StudentRequestNewOTPView.as_view(),
+         name='student_request_new_otp'),
 ]

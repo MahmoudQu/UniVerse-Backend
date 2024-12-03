@@ -1,5 +1,5 @@
 ### Signup a new student
-POST http://localhost:8000/auth/student/signup/
+POST http://localhost:8000/student/signup/
 Content-Type: application/json
 
 {
@@ -10,16 +10,16 @@ Content-Type: application/json
 }
 
 ### Verify OTP for Student
-POST http://localhost:8000/auth/student/verify_otp/
+POST http://localhost:8000/student/verify_otp/
 Content-Type: application/json
 
 {
     "email": "nooraldeen.aloudat@gmail.com",
-    "otp": "952170"
+    "otp": "199637"
 }
 
 ### Request a new student OTP
-POST http://localhost:8000/auth/student/request_new_otp/
+POST http://localhost:8000/student/request_new_otp/
 Content-Type: application/json
 
 {

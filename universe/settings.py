@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import timedelta
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,6 +36,12 @@ INSTALLED_APPS = [
     'apps.authentication',
     'apps.universities',
     'apps.jobs',
+    'apps.resumes',
+    'apps.skills',
+    'apps.admins',
+    'apps.awards',
+    'apps.educations',
+    'apps.experiences',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
 ]
@@ -104,12 +111,12 @@ WSGI_APPLICATION = 'universe.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'UniVerse',
-        'USER': 'postgres',
-        'PASSWORD': '077520520Nn@',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE': config('DATABASE_ENGINE'),
+        'NAME': config('DATABASE_NAME'),
+        'USER': config('DATABASE_USER'),
+        'PASSWORD': config('DATABASE_PASSWORD'),
+        'HOST': config('DATABASE_LOCAL_HOST'),
+        'PORT': config('DATABASE_PORT'),
     }
 }
 
@@ -133,12 +140,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Email configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'jouniversejo@gmail.com'  # Replace with your email
-EMAIL_HOST_PASSWORD = 'vkezvyfqoztddgrb'  # Replace with your email password
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 # Internationalization

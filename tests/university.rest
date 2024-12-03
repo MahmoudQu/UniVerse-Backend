@@ -1,0 +1,8 @@
+# Create a new university
+POST http://localhost:8000/universities/
+Content-Type: application/json
+
+{
+    "name": "Jordan University",
+    "location": "Amman"
+}

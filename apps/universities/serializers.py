@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import University, Major
+from .models import University, Department
 
 
 class UniversitySerializer(serializers.ModelSerializer):
@@ -8,7 +8,7 @@ class UniversitySerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'address', 'website_url', 'contact_email', 'contact_phone']
 
 
-class MajorSerializer(serializers.ModelSerializer):
+class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Major
+        model = Department
         fields = ['id', 'name', 'university']
