@@ -1,1 +1,1 @@
-"user": serializer.data
+#"user": serializer.data
