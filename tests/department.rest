@@ -1,0 +1,24 @@
+### List Departments
+GET http://localhost:8000/api/departments/
+
+### Create a Department
+POST http://localhost:8000/api/departments/
+Content-Type: application/json
+
+{
+    "name": "Computer Science"
+}
+
+### Retrieve a Department
+GET http://localhost:8000/api/departments/12/
+
+### Update a Department
+PUT http://localhost:8000/api/departments/12/
+Content-Type: application/json
+
+{
+    "name": "Mathematics"
+}
+
+### Delete a Department
+DELETE http://localhost:8000/api/departments/13/

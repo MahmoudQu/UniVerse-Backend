@@ -2,11 +2,24 @@
 
 from rest_framework import generics, permissions
 from .serializers import CompanySerializer
+from .models import Company
 from apps.authentication.services.main import (
     handle_company_signup,
     handle_company_otp_verification,
     handle_company_new_otp,
 )
+
+
+class CompanyListCreateView(generics.ListCreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
+
+class CompanyDetailView(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
 
 
 class CompanySignupView(generics.CreateAPIView):

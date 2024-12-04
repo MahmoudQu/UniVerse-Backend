@@ -14,7 +14,7 @@ Content-Type: application/json
 
 ### Get user data
 GET http://localhost:8000/auth/user_data/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyOTQ0ODE4LCJpYXQiOjE3MzI5NDQ1MTgsImp0aSI6IjFlYzFhZjFiMTRmNjQwMGM5ZTIwYzNlZTM3ZjRlYWFkIiwidXNlcl9pZCI6MX0.QR2x1tE64X3bC2jdVegcf3Zgk36b5_L49k0JnBvsQPs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzMzMzMDM4LCJpYXQiOjE3MzMzMzE4MzgsImp0aSI6IjJiZjA1ZmU2ZjMzODQyMDg5YjA3YjM2NGJmNmZhNjMwIiwidXNlcl9pZCI6MX0.xvqr5NENb1meGiqduiB9jdZJ3EVBzFeJTVYcVh45Ta4
 
 ### Check the user's token
 GET http://localhost:8000/auth/check_token/

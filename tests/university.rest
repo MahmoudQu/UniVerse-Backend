@@ -1,8 +1,32 @@
-# Create a new university
-POST http://localhost:8000/universities/
+### List Universities
+GET http://localhost:8000/api/universities/
+
+### Create a University
+POST http://localhost:8000/api/universities/
 Content-Type: application/json
 
 {
-    "name": "Jordan University",
-    "location": "Amman"
+    "name": "Sample University",
+    "address": "123 University Ave",
+    "website_url": "http://www.sampleuniversity.edu",
+    "contact_email": "info@sampleuniversity.edu",
+    "contact_phone": "555-1234"
 }
+
+### Retrieve a University
+GET http://localhost:8000/api/universities/26/
+
+### Update a University
+PUT http://localhost:8000/api/universities/26/
+Content-Type: application/json
+
+{
+    "name": "Updated University Name",
+    "address": "456 New Address",
+    "website_url": "http://www.updateduniversity.edu",
+    "contact_email": "contact@updateduniversity.edu",
+    "contact_phone": "555-5678"
+}
+
+### Delete a University
+DELETE http://localhost:8000/api/universities/26/
