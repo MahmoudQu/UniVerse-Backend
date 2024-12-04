@@ -1,37 +1,13 @@
-from rest_framework import generics
-from .models import University, Department
-from .serializers import UniversitySerializer, DepartmentSerializer
 from rest_framework import generics, permissions
-from permissions.admin_permission import IsAdminUser
-
+from .models import University
+from .serializers import UniversitySerializer
 
 class UniversityListCreateView(generics.ListCreateAPIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = University.objects.all()
     serializer_class = UniversitySerializer
-
 
 class UniversityDetailView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = University.objects.all()
     serializer_class = UniversitySerializer
-
-
-class DepartmentListCreateView(generics.ListCreateAPIView):
-    permission_classes = [permissions.AllowAny]
-    queryset = Department.objects.all()
-    serializer_class = DepartmentSerializer
-
-
-class DepartmentDetailView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.AllowAny]
-    queryset = Department.objects.all()
-    serializer_class = DepartmentSerializer
-
-class DepartmentsByUniversityView(generics.ListAPIView):
-    permission_classes = [permissions.AllowAny]
-    serializer_class = DepartmentSerializer
-
-    def get_queryset(self):
-        university_id = self.kwargs['university_id']
-        return Department.objects.filter(university_id=university_id)

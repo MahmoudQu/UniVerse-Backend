@@ -3,7 +3,8 @@ from django.db import models
 from django.utils import timezone
 import uuid
 from apps.accounts.models import CustomUser
-from apps.universities.models import Department, University
+from apps.universities.models import University
+from apps.departments.models import Department
 from apps.skills.models import Skill  # Assuming you have an app for skills
 
 
@@ -14,7 +15,7 @@ class Student(models.Model):
     is_verified = models.BooleanField(default=False)
     image = models.TextField(null=True, blank=True)
     phone = models.BigIntegerField(null=True, blank=True, unique=True)
-    major = models.ForeignKey(Department, null=True,
+    department = models.ForeignKey(Department, null=True,
                               blank=True, on_delete=models.SET_NULL)
     university = models.ForeignKey(
         University, null=True, blank=True, on_delete=models.SET_NULL)

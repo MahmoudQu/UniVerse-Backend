@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'apps.accounts',
     'apps.authentication',
     'apps.universities',
+    'apps.departments',
     'apps.jobs',
     'apps.resumes',
     'apps.skills',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'apps.experiences',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
+    'django_seed',
 ]
 
 SIMPLE_JWT = {
