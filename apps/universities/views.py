@@ -3,11 +3,11 @@ from .models import University
 from .serializers import UniversitySerializer
 
 class UniversityListCreateView(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = University.objects.all()
     serializer_class = UniversitySerializer
 
 class UniversityDetailView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = University.objects.all()
     serializer_class = UniversitySerializer

@@ -11,13 +11,13 @@ from apps.authentication.services.main import (
 
 
 class CompanyListCreateView(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
 
 class CompanyDetailView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
