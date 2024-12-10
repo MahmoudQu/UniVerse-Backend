@@ -32,7 +32,7 @@ class StudentSerializer(serializers.ModelSerializer):
             image=image,
             first_name=first_name,
             last_name=last_name,
-            phone=phone
+            phone=phone,
             **validated_data
         )
         return student

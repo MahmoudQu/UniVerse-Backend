@@ -1,12 +1,12 @@
 ### Signup a new student
-POST http://localhost:8000/student/signup/
+POST http://localhost:8000/api/students/signup/
 Content-Type: application/json
 
 {
-    "first_name": "Nooraldeen",
-    "last_name": "Aloudat",
-    "email": "nooraldeen.aloudat@gmail.com",
-    "password": "123456789Nn@"
+    "first_name": "mahmoud",
+    "last_name": "qudah",
+    "email": "mahmoud01qudah@gmail.com",
+    "password": "Pass123"
 }
 
 ### Verify OTP for Student
