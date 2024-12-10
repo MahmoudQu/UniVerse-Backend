@@ -1,7 +1,21 @@
-from rest_framework import generics, permissions
+from rest_framework import permissions
 from rest_framework.views import APIView
 from .services.main import *
 from .services.token_services import refresh_user_token
+
+
+class UpdateImageView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def put(self, request, *args, **kwargs):
+        return update_user_image(request)
+
+
+class GetProfileView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        return get_profile(request)
 
 
 class LoginView(APIView):

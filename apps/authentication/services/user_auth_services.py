@@ -25,13 +25,16 @@ def handle_login(request):
         user.is_logged_in = True
         user.save(update_fields=['is_logged_in'])
 
-        # Determine user_type based on related profiles
+        # Determine user_type and is_verified status based on related profiles
         if hasattr(user, 'student'):
             user_type = 'student'
+            is_verified = user.student.is_verified
         elif hasattr(user, 'company'):
             user_type = 'company'
+            is_verified = user.company.is_verified
         else:
             user_type = 'unknown'
+            is_verified = False
 
         return Response(
             {
@@ -40,6 +43,7 @@ def handle_login(request):
                 'refresh_token': refresh_token,
                 'is_logged_in': user.is_logged_in,
                 'user_type': user_type,
+                'is_verified': is_verified,
             },
             status=status.HTTP_200_OK
         )

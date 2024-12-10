@@ -7,29 +7,16 @@ from apps.companies.serializers import CompanySerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
-    data = serializers.SerializerMethodField()
+    user_type = serializers.SerializerMethodField()
 
     class Meta:
         model = CustomUser
-        fields = ['id', 'email', 'data']  # Include other user fields as needed
+        fields = ['id', 'is_logged_in', 'user_type', 'email']
 
-    def get_data(self, obj):
-        # Determine the user_type based on related profiles
+    def get_user_type(self, obj):
         if hasattr(obj, 'student'):
-            return StudentSerializer(obj.student).data
+            return 'student'
         elif hasattr(obj, 'company'):
-            return CompanySerializer(obj.company).data
+            return 'company'
         else:
-            return None
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        request = self.context.get('request')
-        user_type = request.data.get('user_type') if request else None
-
-        if user_type == 'company':
-            representation.pop('student', None)
-        else:
-            representation.pop('company', None)
-
-        return representation
+            return 'unknown'

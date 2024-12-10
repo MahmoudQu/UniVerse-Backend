@@ -2,9 +2,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.db import models
 import random
 from django.utils import timezone
-from django.conf import settings
-import binascii
-import os
 
 
 class CustomUserManager(BaseUserManager):
@@ -42,24 +39,3 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         # Set OTP expiration time (e.g., 10 minutes from now)
         self.otp_expiration = timezone.now() + timezone.timedelta(minutes=10)
         self.save()
-
-
-# class RefreshToken(models.Model):
-#     user = models.OneToOneField(
-#         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#     key = models.CharField(max_length=40, unique=True)
-#     created = models.DateTimeField(auto_now_add=True)
-#     expiration = models.DateTimeField()
-
-#     def save(self, *args, **kwargs):
-#         if not self.key:
-#             self.key = self.generate_key()
-#         if not self.expiration:
-#             self.expiration = timezone.now() + timezone.timedelta(days=7)
-#         super().save(*args, **kwargs)
-
-#     def generate_key(self):
-#         return binascii.hexlify(os.urandom(20)).decode()
-
-#     def __str__(self):
-#         return f"RefreshToken(key={self.key}, user={self.user})"

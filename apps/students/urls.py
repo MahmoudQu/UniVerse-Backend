@@ -6,6 +6,7 @@ from .views import (
     StudentSignupView,
     StudentVerifyOTPView,
     StudentRequestNewOTPView,
+    StudentUpdateProfileView
 )
 
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
          name='student-verify-otp'),
     path('students/request_new_otp/', StudentRequestNewOTPView.as_view(),
          name='student-request-new-otp'),
+    path('student/update_profile/', StudentUpdateProfileView.as_view(), name='student_update_profile'),
 ]

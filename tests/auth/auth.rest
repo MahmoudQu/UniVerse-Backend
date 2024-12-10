@@ -29,3 +29,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiY
 {
     "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczMzA4NTUwOCwiaWF0IjoxNzMyOTk5MTA4LCJqdGkiOiJiYmJkMTFkYzNiY2M0YTJjOWQwZjZkOGI1ZGY1NDIwMSIsInVzZXJfaWQiOjF9.1-muJmJjYRAn3wsg233P8Bz1GTzPe-eeNNZcbtsL8QM"
 }
+
+### Get user profile
+
+GET http://localhost:8000/auth/get_profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNDY5NTc2LCJpYXQiOjE3MzMzMzc5MTEsImp0aSI6ImQ0MWNlZWFhZDNhMTQyMzZiMDUwMmExMTk2MWZiZTVkIiwidXNlcl9pZCI6MX0.Q-iWdEi2vso1paJZrKRxrgBUZGJNYO_GDUMNF5pcSR0
+Content-Type: application/json
+
+### Update user image
+PUT http://localhost:8000/auth/update_image/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNjgyNDY3LCJpYXQiOjE3MzM2NTI5NjMsImp0aSI6ImMwYmMxZDk0ZjQ5MjQzN2Q5NWQ5MDVlMTg2MjdiNGM1IiwidXNlcl9pZCI6MX0.-RgoGWaWUPbPjYl0A-cQfPcikBjaMU5B9FRJW4Jhyu0
+Content-Type: application/json
+
+{
+    "image": "https://placehold.co/600x400"
+}

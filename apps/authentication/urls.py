@@ -6,6 +6,8 @@ from .views import (
     CheckVerificationView,
     GetUserDataView,
     CheckTokenView,
+    GetProfileView,
+    UpdateImageView
 )
 
 urlpatterns = [
@@ -17,4 +19,6 @@ urlpatterns = [
     path('user_data/', GetUserDataView.as_view(),
          name='user_data'),
     path('check_token/', CheckTokenView.as_view(), name='check_token'),
+    path('get_profile/', GetProfileView.as_view(), name='get_profile'),
+    path('update_image/', UpdateImageView.as_view(), name='update_image'),
 ]
