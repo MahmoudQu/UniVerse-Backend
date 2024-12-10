@@ -14,13 +14,13 @@ from .services.profile_services import handle_student_profile_update
 
 
 class StudentListCreateView(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
 
 class StudentDetailView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 

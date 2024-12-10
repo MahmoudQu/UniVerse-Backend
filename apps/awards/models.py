@@ -1,4 +1,3 @@
-# apps/awards/models.py
 from django.db import models
 from apps.students.models import Student
 
@@ -11,4 +10,3 @@ class Award(models.Model):
 
     def __str__(self):
         return self.title
-    

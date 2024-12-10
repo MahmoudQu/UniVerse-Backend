@@ -13,13 +13,13 @@ from .services.profile_services import handle_company_profile_update
 
 
 class CompanyListCreateView(generics.ListCreateAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
 
 class CompanyDetailView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
 
