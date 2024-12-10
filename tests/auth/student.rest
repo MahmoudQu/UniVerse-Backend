@@ -10,12 +10,12 @@ Content-Type: application/json
 }
 
 ### Verify OTP for Student
-POST http://localhost:8000/student/verify_otp/
+POST http://localhost:8000/api/students/verify_otp/
 Content-Type: application/json
 
 {
-    "email": "nooraldeen.aloudat@gmail.com",
-    "otp": "199637"
+    "email": "mahmoud01qudah@gmail.com",
+    "otp": "428816"
 }
 
 ### Request a new student OTP
