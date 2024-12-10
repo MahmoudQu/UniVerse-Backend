@@ -1,5 +1,5 @@
 ### Signup a new student
-POST http://localhost:8000/student/signup/
+POST http://localhost:8000/api/students/signup/
 Content-Type: application/json
 
 {
@@ -45,7 +45,7 @@ Content-Type: application/json
 
 ### Get Student Detail
 GET http://localhost:8000/api/students/1/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzMzMzMDM4LCJpYXQiOjE3MzMzMzE4MzgsImp0aSI6IjJiZjA1ZmU2ZjMzODQyMDg5YjA3YjM2NGJmNmZhNjMwIiwidXNlcl9pZCI6MX0.xvqr5NENb1meGiqduiB9jdZJ3EVBzFeJTVYcVh45Ta4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNDY3ODMyLCJpYXQiOjE3MzMzMzc5MTEsImp0aSI6ImE5MGU1MzFkOGYzZTQzMDE5MzZjNWNiMWE3MmU2NzhhIiwidXNlcl9pZCI6MX0.Cjcraqor1GydT_lae7vUkRQL2F-gVj8E-eJiGYcI64U
 Content-Type: application/json
 
 ### Update Student Information
@@ -62,3 +62,28 @@ Content-Type: application/json
 ### Delete Student Account
 DELETE http://localhost:8000/api/students/1/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzMzMxNTI0LCJpYXQiOjE3MzMzMzAzMjQsImp0aSI6ImNiYTQzNTlmOTZiODQwMTFhM2VhNzk5ZTI1NjQ2Y2U4IiwidXNlcl9pZCI6MX0.kRqrApHoYiQG5GQJGIVMiUEJZ5APBGB8l0mhlxB73gE
+
+
+### Update student profile
+PUT http://localhost:8000/api/student/update_profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNjU4NTIyLCJpYXQiOjE3MzM2NTI5NjMsImp0aSI6ImM5MzNiNDY0NWFmNTRiNzRiZDVkNzI5OGYyM2E0NGM0IiwidXNlcl9pZCI6MX0.LC_aqpID5MRMJBnhRaiBhQ2w_JXEZmHaNG6vxqmkZYI
+Content-Type: application/json
+
+{
+    "firstName": "Nooraldeen",
+    "lastName": "Aloudat",
+    "email": "nfaloudat20@cit.just.edu.jo",
+    "phone": "0776795866",
+    "university": "4",
+    "department": "2",
+    "portfolio": "https://github.com/noorodat",
+    "linkedin": "https://github.com/noorodat",
+    "github": "https://github.com/noorodat",
+    "skills": [
+        "Python",
+        "Django",
+        "REST API",
+        "Java"
+    ]
+}
+

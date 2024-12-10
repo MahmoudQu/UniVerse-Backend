@@ -1,6 +1,7 @@
 # apps/companies/views.py
 
 from rest_framework import generics, permissions
+from rest_framework.views import APIView
 from .serializers import CompanySerializer
 from .models import Company
 from apps.authentication.services.main import (
@@ -8,6 +9,7 @@ from apps.authentication.services.main import (
     handle_company_otp_verification,
     handle_company_new_otp,
 )
+from .services.profile_services import handle_company_profile_update 
 
 
 class CompanyListCreateView(generics.ListCreateAPIView):
@@ -42,3 +44,10 @@ class CompanyRequestNewOTPView(generics.CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         return handle_company_new_otp(request)
+
+
+class CompanyProfileUpdateView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def put(self, request, *args, **kwargs):
+        return handle_company_profile_update(request)

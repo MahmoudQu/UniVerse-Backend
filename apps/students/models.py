@@ -13,17 +13,18 @@ class Student(models.Model):
     first_name = models.CharField(max_length=255, default='Unknown')
     last_name = models.CharField(max_length=255, default='Unknown')
     is_verified = models.BooleanField(default=False)
-    image = models.TextField(null=True, blank=True)
-    phone = models.BigIntegerField(null=True, blank=True, unique=True)
+    image = models.TextField(null=True, blank=True, default=None)
+    phone = models.BigIntegerField(
+        null=True, blank=True, unique=True, default=None)
     department = models.ForeignKey(Department, null=True,
-                              blank=True, on_delete=models.SET_NULL)
+                                   blank=True, on_delete=models.SET_NULL)
     university = models.ForeignKey(
         University, null=True, blank=True, on_delete=models.SET_NULL)
     date_of_birth = models.DateField(null=True, blank=True)
     github = models.URLField(max_length=255, null=True, blank=True)
     linkedin = models.URLField(max_length=255, null=True, blank=True)
     portfolio = models.URLField(max_length=255, null=True, blank=True)
-    skills = models.ManyToManyField('skills.Skill', related_name='students')
+    skills = models.TextField(null=True, blank=True, default="")
 
     def generate_otp(self):
         self.user.otp = str(uuid.uuid4().int)[:6]

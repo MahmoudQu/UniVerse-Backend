@@ -6,18 +6,20 @@ from apps.accounts.models import CustomUser
 
 
 class CompanySerializer(serializers.ModelSerializer):
-    name = serializers.CharField()
-    email = serializers.EmailField(write_only=True)
+    email = serializers.EmailField(source='user.email')
     password = serializers.CharField(write_only=True)
-    is_verified = serializers.BooleanField(read_only=True)
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
         model = Company
-        fields = ['name', 'email', 'password', 'is_verified']
+        fields = [
+            'id', 'user', 'name', 'email', 'password', 'is_verified',
+            'image', 'address', 'phone', 'website_url'
+        ]
 
     def create(self, validated_data):
-        name = validated_data.pop('name')
-        email = validated_data.pop('email')
+        user_data = validated_data.pop('user', {})
+        email = user_data.get('email')
         password = validated_data.pop('password')
 
         user = CustomUser.objects.create_user(
@@ -26,7 +28,11 @@ class CompanySerializer(serializers.ModelSerializer):
         )
         company = Company.objects.create(
             user=user,
-            name=name,
             **validated_data
         )
         return company
+
+    def update(self, instance, validated_data):
+        validated_data.pop('user', None)
+        validated_data.pop('password', None)
+        return super().update(instance, validated_data)
