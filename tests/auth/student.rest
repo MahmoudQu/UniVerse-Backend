@@ -3,19 +3,23 @@ POST http://localhost:8000/api/students/signup/
 Content-Type: application/json
 
 {
-    "first_name": "Nooraldeen",
-    "last_name": "Aloudat",
-    "email": "nooraldeen.aloudat@gmail.com",
-    "password": "123456789Nn@"
+    "first_name": "mahmoud",
+    "last_name": "qudah",
+    "email": "mahmoud01qudah@gmail.com",
+    "password": "Pass123"
 }
 
 ### Verify OTP for Student
+<<<<<<< HEAD
+POST http://localhost:8000/api/students/verify_otp/
+=======
 POST http://localhost:8000/api/student/verify_otp/
+>>>>>>> bbd22b806f4c7686ab11f6eaeeb11d7cb0c32804
 Content-Type: application/json
 
 {
-    "email": "nooraldeen.aloudat@gmail.com",
-    "otp": "199637"
+    "email": "mahmoud01qudah@gmail.com",
+    "otp": "428816"
 }
 
 ### Request a new student OTP
