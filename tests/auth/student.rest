@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ### Verify OTP for Student
-POST http://localhost:8000/student/verify_otp/
+POST http://localhost:8000/api/student/verify_otp/
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ### Request a new student OTP
-POST http://localhost:8000/student/request_new_otp/
+POST http://localhost:8000/api/student/request_new_otp/
 Content-Type: application/json
 
 {
