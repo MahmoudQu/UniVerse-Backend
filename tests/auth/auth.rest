@@ -38,9 +38,6 @@ Content-Type: application/json
 
 ### Update user image
 PUT http://localhost:8000/auth/update_image/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNjgyNDY3LCJpYXQiOjE3MzM2NTI5NjMsImp0aSI6ImMwYmMxZDk0ZjQ5MjQzN2Q5NWQ5MDVlMTg2MjdiNGM1IiwidXNlcl9pZCI6MX0.-RgoGWaWUPbPjYl0A-cQfPcikBjaMU5B9FRJW4Jhyu0
-Content-Type: application/json
+Content-Type: multipart/form-data
 
-{
-    "image": "https://placehold.co/600x400"
-}
+image=@/path/to/image

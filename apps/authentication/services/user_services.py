@@ -74,11 +74,23 @@ def update_user_image(request):
         )
 
     try:
-        # Upload the image to Cloudinary
+        # Check if the user already has an image and delete it from Cloudinary
+        existing_image_url = None
+        if hasattr(user, 'student') and user.student.image:
+            existing_image_url = user.student.image
+        elif hasattr(user, 'company') and user.company.image:
+            existing_image_url = user.company.image
+
+        if existing_image_url:
+            # Extract the public ID of the existing image from the URL
+            public_id = existing_image_url.split("/")[-1].split(".")[0]
+            cloudinary.uploader.destroy(public_id)
+
+        # Upload the new image to Cloudinary
         result = cloudinary.uploader.upload(image)
         image_url = result.get('secure_url')
 
-        # Save the image URL to the user's profile
+        # Save the new image URL to the user's profile
         if hasattr(user, 'student'):
             user.student.image = image_url
             user.student.save()
@@ -91,6 +103,6 @@ def update_user_image(request):
     except Exception as e:
         return Response(
             {"detail": "An error occurred while uploading the image.",
-                "error": str(e)},
+             "error": str(e)},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )
