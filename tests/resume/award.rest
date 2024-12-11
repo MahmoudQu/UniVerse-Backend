@@ -1,0 +1,39 @@
+# tests/resume/awards.rest
+
+### List Awards
+GET http://localhost:8000/api/awards/
+Authorization: Bearer 
+
+### Create a new Award
+POST http://localhost:8000/api/awards/
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "student": 1,
+    "title": "Best Student Award",
+    "description": "Awarded for outstanding academic performance",
+    "start_date": "2020-01-01",
+    "end_date": "2020-01-01"
+}
+
+### Retrieve an Award
+GET http://localhost:8000/api/awards/1/
+Authorization: Bearer 
+
+### Update an Award
+PUT http://localhost:8000/api/awards/1/
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "student": 1,
+    "title": "Updated Award Title",
+    "description": "Awarded for outstanding academic performance",
+    "start_date": "2020-01-01",
+    "end_date": "2020-01-01"
+}
+
+### Delete an Award
+DELETE http://localhost:8000/api/awards/1/
+Authorization: Bearer 

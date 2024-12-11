@@ -1,8 +1,10 @@
 from django.db import models
 from apps.students.models import Student
 
+
 class Award(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='awards')
+    student = models.ForeignKey(Student, null=True,
+                                blank=True, on_delete=models.SET_NULL, related_name='awards')
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     start_date = models.DateField()

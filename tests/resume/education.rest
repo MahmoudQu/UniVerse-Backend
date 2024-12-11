@@ -1,0 +1,41 @@
+# tests/resume/education.rest
+
+### List Educations
+GET http://localhost:8000/api/educations/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzOTMwNDAwLCJpYXQiOjE3MzM5Mjg2MDAsImp0aSI6IjdlNTE5MDgyYjE4YTQ2ZGNhNWE3ODI3ZDRkZGFhOTkzIiwidXNlcl9pZCI6MX0.RY4L028vHcRogFr5-cPM1BQDw437HSdy9rRlf29JZo4
+
+### Create a new Education
+POST http://localhost:8000/api/educations/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzOTMwNDAwLCJpYXQiOjE3MzM5Mjg2MDAsImp0aSI6IjdlNTE5MDgyYjE4YTQ2ZGNhNWE3ODI3ZDRkZGFhOTkzIiwidXNlcl9pZCI6MX0.RY4L028vHcRogFr5-cPM1BQDw437HSdy9rRlf29JZo4
+Content-Type: application/json
+
+{
+    "student": 1,
+    "field_of_study": "Computer science",
+    "institute": "Jordan university of science and technology",
+    "description": "Study computer science at Jordan university of science and technology with 3.5 GPA.",
+    "start_date": "2020-01-01",
+    "end_date": "2024-06-01"
+}
+
+### Retrieve an Education
+GET http://localhost:8000/api/educations/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzOTMwNDAwLCJpYXQiOjE3MzM5Mjg2MDAsImp0aSI6IjdlNTE5MDgyYjE4YTQ2ZGNhNWE3ODI3ZDRkZGFhOTkzIiwidXNlcl9pZCI6MX0.RY4L028vHcRogFr5-cPM1BQDw437HSdy9rRlf29JZo4
+
+### Update an Education
+PUT http://localhost:8000/api/educations/1/
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "student": 1,
+    "field_of_study": "Computer Science",
+    "institute": "Updated University",
+    "description": "Bachelor's degree in Computer Science",
+    "start_date": "2020-01-01",
+    "end_date": "2024-01-01"
+}
+
+### Delete an Education
+DELETE http://localhost:8000/api/educations/1/
+Authorization: Bearer 

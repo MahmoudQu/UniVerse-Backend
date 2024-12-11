@@ -1,0 +1,39 @@
+# tests/resume/experiences.rest
+
+### List Experiences
+GET http://localhost:8000/api/experiences/
+Authorization: Bearer 
+
+### Create a new Experience
+POST http://localhost:8000/api/experiences/
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "student": 1,
+    "position": "Software Engineer",
+    "company": "ABC Corporation",
+    "start_date": "2020-01-01",
+    "end_date": "2020-01-01"
+}
+
+### Retrieve an Experience
+GET http://localhost:8000/api/experiences/1/
+Authorization: Bearer 
+
+### Update an Experience
+PUT http://localhost:8000/api/experiences/1/
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "student": 1,
+    "position": "Updated Position",
+    "company": "ABC Corporation",
+    "start_date": "2020-01-01",
+    "end_date": "2020-01-01"
+}
+
+### Delete an Experience
+DELETE http://localhost:8000/api/experiences/1/
+Authorization: Bearer 

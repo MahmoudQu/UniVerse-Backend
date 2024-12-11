@@ -4,12 +4,12 @@ from .models import Education
 from .serializers import EducationSerializer
 
 class EducationListCreateView(generics.ListCreateAPIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 
 
 class EducationDetailView(generics.RetrieveUpdateDestroyAPIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
