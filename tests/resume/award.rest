@@ -2,28 +2,27 @@
 
 ### List Awards
 GET http://localhost:8000/api/awards/
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MDk4OTUyLCJpYXQiOjE3MzQwNDE1MTAsImp0aSI6IjFkMzQ4ZGRkNTBlYTRhODZiZDU4N2ViZmFlNDRmYmVhIiwidXNlcl9pZCI6MX0.ira0QdY4kb7KsHEb1rR1S98jhUsG_M1zTrnOHm3Py8Q
 
 ### Create a new Award
 POST http://localhost:8000/api/awards/
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTAxNjQxLCJpYXQiOjE3MzQwNDE1MTAsImp0aSI6IjZlNWIzMjZmNTUzYTRiMTA5MmQ4YTk2MDA1M2JiM2NmIiwidXNlcl9pZCI6MX0.u8T0_67tTbMoYShy7UexC2Iy_Pw1OZzupL8tC7XJFBo
 Content-Type: application/json
 
 {
     "student": 1,
-    "title": "Best Student Award",
-    "description": "Awarded for outstanding academic performance",
-    "start_date": "2020-01-01",
-    "end_date": "2020-01-01"
+    "title": "IDk22 award",
+    "description": "Awaraaded for idk",
+    "start_date": "2020-01-01"
 }
 
 ### Retrieve an Award
 GET http://localhost:8000/api/awards/1/
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MDk4OTUyLCJpYXQiOjE3MzQwNDE1MTAsImp0aSI6IjFkMzQ4ZGRkNTBlYTRhODZiZDU4N2ViZmFlNDRmYmVhIiwidXNlcl9pZCI6MX0.ira0QdY4kb7KsHEb1rR1S98jhUsG_M1zTrnOHm3Py8Q
 
 ### Update an Award
-PUT http://localhost:8000/api/awards/1/
-Authorization: Bearer 
+PUT http://localhost:8000/api/awards/2/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MDk4OTUyLCJpYXQiOjE3MzQwNDE1MTAsImp0aSI6IjFkMzQ4ZGRkNTBlYTRhODZiZDU4N2ViZmFlNDRmYmVhIiwidXNlcl9pZCI6MX0.ira0QdY4kb7KsHEb1rR1S98jhUsG_M1zTrnOHm3Py8Q
 Content-Type: application/json
 
 {

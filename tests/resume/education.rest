@@ -2,7 +2,7 @@
 
 ### List Educations
 GET http://localhost:8000/api/educations/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzOTMwNDAwLCJpYXQiOjE3MzM5Mjg2MDAsImp0aSI6IjdlNTE5MDgyYjE4YTQ2ZGNhNWE3ODI3ZDRkZGFhOTkzIiwidXNlcl9pZCI6MX0.RY4L028vHcRogFr5-cPM1BQDw437HSdy9rRlf29JZo4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MDE5OTYxLCJpYXQiOjE3MzM5Mjg2MDAsImp0aSI6ImYzYWQzNTlkZTg3OTRjNDQ4MDFhYmM0Mjg1NWUyODQwIiwidXNlcl9pZCI6MX0.WgKL6vssVQ_AX52LK7r9lX-mMX4oJkFLsh_hF1nJlkw
 
 ### Create a new Education
 POST http://localhost:8000/api/educations/
@@ -23,19 +23,19 @@ GET http://localhost:8000/api/educations/1/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzOTMwNDAwLCJpYXQiOjE3MzM5Mjg2MDAsImp0aSI6IjdlNTE5MDgyYjE4YTQ2ZGNhNWE3ODI3ZDRkZGFhOTkzIiwidXNlcl9pZCI6MX0.RY4L028vHcRogFr5-cPM1BQDw437HSdy9rRlf29JZo4
 
 ### Update an Education
-PUT http://localhost:8000/api/educations/1/
-Authorization: Bearer 
+PUT http://localhost:8000/api/educations/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MDMzOTE5LCJpYXQiOjE3MzM5Mjg2MDAsImp0aSI6ImNiY2ZiZTFjZjhiODQ0YzFiNWM5MWI5MjNiN2RmZjI5IiwidXNlcl9pZCI6MX0.Ml0hQPBiOCGDoCqU70aUMoXDUGZRTUhrsb1ObBO-acs
 Content-Type: application/json
 
 {
     "student": 1,
-    "field_of_study": "Computer Science",
-    "institute": "Updated University",
-    "description": "Bachelor's degree in Computer Science",
+    "field_of_study": "CS",
+    "institute": "JUST",
+    "description": "Edited",
     "start_date": "2020-01-01",
     "end_date": "2024-01-01"
 }
 
 ### Delete an Education
-DELETE http://localhost:8000/api/educations/1/
-Authorization: Bearer 
+DELETE http://localhost:8000/api/educations/9/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MDM1NzU2LCJpYXQiOjE3MzM5Mjg2MDAsImp0aSI6ImQ4YTdmZGIyMzg2ZTQ5NzE4Mjc0NTMzMGNlYWMwYWYyIiwidXNlcl9pZCI6MX0.gqqfyF0WSk-2E6ZxTIN7DI72Gni6Mshhp5DpI28AwDw

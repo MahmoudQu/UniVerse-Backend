@@ -2,28 +2,28 @@
 
 ### List Experiences
 GET http://localhost:8000/api/experiences/
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTAzODI3LCJpYXQiOjE3MzQwNDE1MTAsImp0aSI6Ijc5OTFhNzdiMmZjNzQyZGRiOWNkNzRlOTE3ZDQ4YjE1IiwidXNlcl9pZCI6MX0.rbakK9lQinWNtf3Y9JCBJM-ycFPf7yUgoYzelJS0fo0
 
 ### Create a new Experience
 POST http://localhost:8000/api/experiences/
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTAzODI3LCJpYXQiOjE3MzQwNDE1MTAsImp0aSI6Ijc5OTFhNzdiMmZjNzQyZGRiOWNkNzRlOTE3ZDQ4YjE1IiwidXNlcl9pZCI6MX0.rbakK9lQinWNtf3Y9JCBJM-ycFPf7yUgoYzelJS0fo0
 Content-Type: application/json
 
 {
     "student": 1,
     "position": "Software Engineer",
-    "company": "ABC Corporation",
+    "company": "MENADevs",
     "start_date": "2020-01-01",
-    "end_date": "2020-01-01"
+    "end_date": "2024-01-01"
 }
 
 ### Retrieve an Experience
 GET http://localhost:8000/api/experiences/1/
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTAzODI3LCJpYXQiOjE3MzQwNDE1MTAsImp0aSI6Ijc5OTFhNzdiMmZjNzQyZGRiOWNkNzRlOTE3ZDQ4YjE1IiwidXNlcl9pZCI6MX0.rbakK9lQinWNtf3Y9JCBJM-ycFPf7yUgoYzelJS0fo0
 
 ### Update an Experience
 PUT http://localhost:8000/api/experiences/1/
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTAzODI3LCJpYXQiOjE3MzQwNDE1MTAsImp0aSI6Ijc5OTFhNzdiMmZjNzQyZGRiOWNkNzRlOTE3ZDQ4YjE1IiwidXNlcl9pZCI6MX0.rbakK9lQinWNtf3Y9JCBJM-ycFPf7yUgoYzelJS0fo0
 Content-Type: application/json
 
 {
@@ -36,4 +36,4 @@ Content-Type: application/json
 
 ### Delete an Experience
 DELETE http://localhost:8000/api/experiences/1/
-Authorization: Bearer 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0MTAzODI3LCJpYXQiOjE3MzQwNDE1MTAsImp0aSI6Ijc5OTFhNzdiMmZjNzQyZGRiOWNkNzRlOTE3ZDQ4YjE1IiwidXNlcl9pZCI6MX0.rbakK9lQinWNtf3Y9JCBJM-ycFPf7yUgoYzelJS0fo0
