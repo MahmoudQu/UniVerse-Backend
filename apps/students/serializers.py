@@ -32,7 +32,7 @@ class StudentSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'user', 'first_name', 'last_name', 'email', 'password',
             'is_verified', 'image', 'phone', 'department', 'university',
-            'date_of_birth', 'github', 'linkedin', 'portfolio', 'skills', 'department_id', 'university_id', 'about'
+            'date_of_birth', 'github', 'linkedin', 'portfolio', 'skills', 'department_id', 'university_id'
         ]
 
     def create(self, validated_data):

@@ -25,6 +25,7 @@ class FeaturedCompaniesView(generics.ListAPIView):
             job_posts = JobPost.objects.filter(
                 company=company, status=True).count()
             data.append({
+                'id': company.id,
                 'image': company.image,
                 'name': company.name,
                 'country': company.country,
@@ -44,6 +45,31 @@ class CompanyDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.AllowAny]
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        data = serializer.data
+
+        # Get 3 random active job posts from this company
+        random_jobs = JobPost.objects.filter(
+            company=instance,
+            status=True
+        ).order_by('?')[:3].values(
+            'id', 'title', 'description', 'type',
+            'salary_range', 'created_at'
+        )
+
+        # Add user and jobs data to response
+        response_data = {
+            **data,
+            'user': {
+                'email': instance.user.email,
+            },
+            'random_jobs': list(random_jobs)
+        }
+
+        return Response(response_data)
 
 
 class CompanySignupView(generics.CreateAPIView):

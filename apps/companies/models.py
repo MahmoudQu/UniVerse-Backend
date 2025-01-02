@@ -17,7 +17,6 @@ class Company(models.Model):
     website_url = models.URLField(max_length=255, null=True, blank=True)
     city = models.CharField(max_length=40, null=True, blank=True)
     country = models.CharField(max_length=40, null=True, blank=True)
-    about = models.TextField(null=True, blank=True)
 
     def generate_otp(self):
         self.user.otp = str(uuid.uuid4().int)[:6]

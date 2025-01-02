@@ -14,7 +14,7 @@ class CompanySerializer(serializers.ModelSerializer):
         model = Company
         fields = [
             'id', 'user', 'name', 'email', 'password', 'is_verified',
-            'image', 'address', 'phone', 'website_url', 'city', 'country', 'industry', 'about'
+            'image', 'address', 'phone', 'website_url', 'city', 'country', 'industry'
         ]
 
     def create(self, validated_data):
@@ -36,3 +36,4 @@ class CompanySerializer(serializers.ModelSerializer):
         validated_data.pop('user', None)
         validated_data.pop('password', None)
         return super().update(instance, validated_data)
+
