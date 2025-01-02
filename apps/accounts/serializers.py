@@ -8,6 +8,7 @@ from apps.companies.serializers import CompanySerializer
 
 class UserSerializer(serializers.ModelSerializer):
     user_type = serializers.SerializerMethodField()
+    id = serializers.SerializerMethodField()
 
     class Meta:
         model = CustomUser
@@ -20,3 +21,11 @@ class UserSerializer(serializers.ModelSerializer):
             return 'company'
         else:
             return 'unknown'
+
+    def get_id(self, obj):
+        if hasattr(obj, 'student'):
+            return obj.student.id
+        elif hasattr(obj, 'company'):
+            return obj.company.id
+        else:
+            return None

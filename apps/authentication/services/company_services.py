@@ -12,7 +12,7 @@ def handle_company_signup(request):
 
     serializer = CompanySerializer(data=request.data)
     if serializer.is_valid():
-        email = serializer.validated_data['email']
+        email = serializer.validated_data['user']['email']
         if CustomUser.objects.filter(email=email).exists():
             return Response({"detail": "Email already exists."}, status=status.HTTP_400_BAD_REQUEST)
         profile = serializer.save()

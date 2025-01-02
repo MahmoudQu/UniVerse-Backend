@@ -11,6 +11,7 @@ class Education(models.Model):
     description = models.TextField(null=True, blank=True)
     start_date = models.DateField()
     end_date = models.DateField()
+    present = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, null=True)
 

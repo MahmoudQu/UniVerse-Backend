@@ -24,6 +24,7 @@ class Student(models.Model):
     github = models.URLField(max_length=255, null=True, blank=True)
     linkedin = models.URLField(max_length=255, null=True, blank=True)
     portfolio = models.URLField(max_length=255, null=True, blank=True)
+    about = models.TextField(null=True, blank=True)
     skills = models.TextField(null=True, blank=True, default="")
 
     def generate_otp(self):

@@ -1,0 +1,62 @@
+### List all job posts
+GET http://127.0.0.1:8000/api/job_posts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzkyNDE3LCJpYXQiOjE3MzUzNTEzNjUsImp0aSI6ImRkMjFiN2YyMTFhODQ5ZjQ5ZWQ0OGQyODYyM2M4Njc1IiwidXNlcl9pZCI6MX0.vIKw0ACA4YF1jCbsDH6acuUbSM6wBovqPcAdbl-KqCk
+
+
+### List jobs by company
+GET http://127.0.0.1:8000/api/companies/1/job-posts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzUzMTY1LCJpYXQiOjE3MzUzNTEzNjUsImp0aSI6IjFjMDJhNzE3YWQ5NDRlMDM5OTZhYWVlZjBhN2Y2NTViIiwidXNlcl9pZCI6MX0.l7Mc26QjW7ywxqXJ3ZRqRA-VyEum7dC3YSJ37YUcFf0
+
+### Create a new job post
+POST http://127.0.0.1:8000/api/job_posts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzQ5MDY5LCJpYXQiOjE3MzUzMTYyNDEsImp0aSI6ImZhYzE5MWIwZDNiMjRlNTJiYTdiMDUyMzUxMTgwNjliIiwidXNlcl9pZCI6MX0.syplJDKXvdOcFx1FiqK3fh0KNtl3XeE2J0x-8jdReXs
+Content-Type: application/json
+
+{
+  "title": "Software Engineer",
+  "description": "We are looking for a talented Software Engineer.",
+  "company_id": 2,
+  "department_id": 1,
+  "type": "Full-time",
+  "salary_range": "5000-7000",
+  "tags": ["Python", "C++", "REST API"],
+  "requirements": ["3+ years of experience", "Bachelor's degree in CS"]
+}
+
+###
+
+# Retrieve a specific job post
+GET http://127.0.0.1:8000/api/job_posts/1/
+
+###
+
+# Update a specific job post
+PUT http://127.0.0.1:8000/api/job_posts/1/
+Content-Type: application/json
+
+{
+  "title": "Senior Software Engineer",
+  "description": "We are looking for an experienced Software Engineer.",
+  "company": 1,
+  "department": 1,
+  "type": "Full-time",
+  "salary_range": "7000-9000",
+  "tags": ["Python", "Django", "Microservices"],
+  "requirements": ["5+ years of experience", "Bachelor's or Master's in CS"]
+}
+
+###
+
+# Partially update a specific job post
+PATCH http://127.0.0.1:8000/api/job_posts/1/
+Content-Type: application/json
+
+{
+  "title": "Lead Software Engineer"
+}
+
+###
+
+# Delete a specific job post
+DELETE http://127.0.0.1:8000/api/job_posts/4/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MzI4OTQyLCJpYXQiOjE3MzUzMTYyNDEsImp0aSI6IjAxNzUyY2IzMjRjYTQ2N2Y5MTlmZmQzYmM4NGI0YTNmIiwidXNlcl9pZCI6MX0.wL-FEKnPB4Xslu7GoG4zdyZT5PewmOOX_DuTwEFd1ho

@@ -41,3 +41,24 @@ PUT http://localhost:8000/auth/update_image/
 Content-Type: multipart/form-data
 
 image=@/path/to/image
+
+
+### Update User Email
+PUT http://localhost:8000/auth/update_email/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NTYzMzMwLCJpYXQiOjE3MzQ1NDc2MjEsImp0aSI6IjBmODRjNzBkZWQwYzRiZjY5NzE5M2JkMGJiODNhZmVmIiwidXNlcl9pZCI6MX0.2tR1mpRHBNC3n_AVanQpWL7YM3I-Ti43dnbRhpmsQeg
+Content-Type: application/json
+
+{
+    "email": "nooraldeen.aloudat@gmail.com"
+}
+
+### Update Password
+PUT http://localhost:8000/auth/update_password/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1MTU5NTM2LCJpYXQiOjE3MzUxNTc3MzYsImp0aSI6IjI5NmQ1NmE1NzU5YzQzNWQ5NWI2ODY0ZjE0M2QwMTMyIiwidXNlcl9pZCI6MX0.6j2XWfmC4DBwqChtNel6FCYY32axJiwTPhuO_WLM3ug
+Content-Type: application/json
+
+{
+    "old_password": "077520520Nn@",
+    "new_password": "123456789Nn@",
+    "confirm_password": "123456789Nn@"
+}

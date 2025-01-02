@@ -6,6 +6,8 @@ from .views import (
     CompanySignupView,
     CompanyVerifyOTPView,
     CompanyRequestNewOTPView,
+    CompanyProfileUpdateView,
+    FeaturedCompaniesView
 )
 
 urlpatterns = [
@@ -16,4 +18,8 @@ urlpatterns = [
          name='company_verify_otp'),
     path('companies/request_new_otp/', CompanyRequestNewOTPView.as_view(),
          name='company_request_new-otp'),
+    path('company/update_profile/', CompanyProfileUpdateView.as_view(),
+         name='company_update_profile'),
+    path('companies/featured_companies/',
+         FeaturedCompaniesView.as_view(), name='featured_companies'),
 ]

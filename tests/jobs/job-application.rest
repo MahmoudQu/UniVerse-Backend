@@ -1,0 +1,43 @@
+### List all job applications
+GET http://localhost:8000/api/applications/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NjAzNTgxLCJpYXQiOjE3MzU1OTk1NDEsImp0aSI6IjZhN2NiNTY3OTIxMjQ4OThiM2Q2ZjM0YmMwNjk3YTczIiwidXNlcl9pZCI6M30.6gYWP84wDpZYlQT83I4OvVaE_Ygsr-zmYiV0__CBQQg
+### Create a new job application
+POST http://localhost:8000/api/applications/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+
+{
+    "status": "Pending",
+    "student": 1,
+    "job_post": 1,
+    "resume": 1
+}
+
+### Retrieve a specific job application
+GET http://localhost:8000/api/applications/1/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+
+### Update a specific job application
+PUT http://localhost:8000/api/applications/1/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+
+{
+    "status": "Accepted",
+    "student": 1,
+    "job_post": 1,
+    "resume": 1
+}
+
+### Partially update a specific job application
+PATCH http://localhost:8000/api/applications/1/
+Authorization: Bearer YOUR_ACCESS_TOKEN
+Content-Type: application/json
+
+{
+    "status": "Rejected"
+}
+
+### Delete a specific job application
+DELETE http://localhost:8000/api/applications/1/
+Authorization: Bearer YOUR_ACCESS_TOKEN

@@ -1,0 +1,4 @@
+### Get Featured Jobs
+
+GET http://127.0.0.1:8000/api/students/featured_students/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NTE1ODU1LCJpYXQiOjE3MzU1MTQwNTUsImp0aSI6IjMxNDk1YTA3ZTVmZDQ3MmVhNmRiNTFjYjZkYWZhMDU4IiwidXNlcl9pZCI6MX0.scMDNiT5NBCAwzbVBuxIMvelDewiL7V61ymZor-HWGQ

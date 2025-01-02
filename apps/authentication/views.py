@@ -4,6 +4,20 @@ from .services.main import *
 from .services.token_services import refresh_user_token
 
 
+class UpdatePasswordView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def put(self, request):
+        return update_user_password(request)
+
+
+class UpdateEmailView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def put(self, request):
+        return update_user_email(request)
+
+
 class UpdateImageView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 

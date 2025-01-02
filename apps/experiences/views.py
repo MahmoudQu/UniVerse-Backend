@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions
 from .models import Experience
 from .serializers import ExperienceSerializer
+from permissions import student_permission
 
 
 class ExperienceListCreateView(generics.ListCreateAPIView):

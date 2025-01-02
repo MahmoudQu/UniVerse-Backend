@@ -14,7 +14,7 @@ class CompanySerializer(serializers.ModelSerializer):
         model = Company
         fields = [
             'id', 'user', 'name', 'email', 'password', 'is_verified',
-            'image', 'address', 'phone', 'website_url'
+            'image', 'address', 'phone', 'website_url', 'city', 'country', 'industry', 'about'
         ]
 
     def create(self, validated_data):

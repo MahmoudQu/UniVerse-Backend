@@ -10,10 +10,14 @@ class Company(models.Model):
     name = models.CharField(max_length=255, default='Unknown')
     is_verified = models.BooleanField(default=False)
     image = models.TextField(null=True, blank=True)
+    industry = models.CharField(max_length=100, null=True, blank=True)
     address = models.TextField(null=True, blank=True)
     phone = models.CharField(max_length=255, null=True,
                              blank=True, unique=True)
     website_url = models.URLField(max_length=255, null=True, blank=True)
+    city = models.CharField(max_length=40, null=True, blank=True)
+    country = models.CharField(max_length=40, null=True, blank=True)
+    about = models.TextField(null=True, blank=True)
 
     def generate_otp(self):
         self.user.otp = str(uuid.uuid4().int)[:6]

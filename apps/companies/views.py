@@ -2,6 +2,8 @@
 
 from rest_framework import generics, permissions
 from rest_framework.views import APIView
+
+from apps.jobs.models import JobPost
 from .serializers import CompanySerializer
 from .models import Company
 from apps.authentication.services.main import (
@@ -9,7 +11,27 @@ from apps.authentication.services.main import (
     handle_company_otp_verification,
     handle_company_new_otp,
 )
-from .services.profile_services import handle_company_profile_update 
+from .services.profile_services import handle_company_profile_update
+from rest_framework.response import Response
+from random import sample
+
+
+class FeaturedCompaniesView(generics.ListAPIView):
+    def get(self, request):
+        companies = Company.objects.all()
+        random_companies = sample(list(companies), min(12, len(companies)))
+        data = []
+        for company in random_companies:
+            job_posts = JobPost.objects.filter(
+                company=company, status=True).count()
+            data.append({
+                'image': company.image,
+                'name': company.name,
+                'country': company.country,
+                'city': company.city,
+                'job_posts': job_posts
+            })
+        return Response(data)
 
 
 class CompanyListCreateView(generics.ListCreateAPIView):

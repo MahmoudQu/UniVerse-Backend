@@ -3,6 +3,7 @@ from django_seed import Seed
 from apps.universities.models import University
 from apps.departments.models import Department
 
+
 class Command(BaseCommand):
     help = 'Seed the database with universities and departments'
 
@@ -38,27 +39,32 @@ class Command(BaseCommand):
             'Other',
         ]
 
-        # Departments data
+        # Departments data with icons
         departments_data = [
-            'Engineering',
-            'Information Technology (IT)',
-            'Business and Economics',
-            'Architecture and Design',
-            'Medicine and healthcare',
-            'Arts and Humanities',
-            'Law and Sharia',
-            'Education',
-            'Science',
-            'Agriculture',
-            'Other',
+            {'name': 'Engineering', 'icon': 'flaticon-settings-1'},
+            {'name': 'Information Technology (IT)',
+             'icon': 'flaticon-web-programming'},
+            {'name': 'Business and Economics', 'icon': 'flaticon-money-1'},
+            {'name': 'Architecture and Design', 'icon': 'flaticon-vector'},
+            {'name': 'Medicine and healthcare', 'icon': 'flaticon-first-aid-kit-1'},
+            {'name': 'Arts and Humanities', 'icon': 'flaticon-headhunting'},
+            {'name': 'Law and Sharia', 'icon': 'flaticon-promotion'},
+            {'name': 'Education', 'icon': 'flaticon-notebook'},
+            {'name': 'Science', 'icon': 'flaticon-heart'},
+            {'name': 'Agriculture', 'icon': 'flaticon-car'},
+            {'name': 'Other', 'icon': 'flaticon-rocket-ship'},
         ]
 
         # Seed Universities
         for name in universities_data:
             University.objects.get_or_create(name=name)
 
-        # Seed Departments
-        for name in departments_data:
-            Department.objects.get_or_create(name=name)
+        # Seed Departments with icons
+        for department in departments_data:
+            Department.objects.get_or_create(
+                name=department['name'],
+                icon=department['icon']
+            )
 
-        self.stdout.write(self.style.SUCCESS('Successfully seeded universities and departments'))
+        self.stdout.write(self.style.SUCCESS(
+            'Successfully seeded universities and departments with icons'))
