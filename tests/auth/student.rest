@@ -10,11 +10,7 @@ Content-Type: application/json
 }
 
 ### Verify OTP for Student
-<<<<<<< HEAD
 POST http://localhost:8000/api/students/verify_otp/
-=======
-POST http://localhost:8000/api/student/verify_otp/
->>>>>>> bbd22b806f4c7686ab11f6eaeeb11d7cb0c32804
 Content-Type: application/json
 
 {
