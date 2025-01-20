@@ -23,7 +23,7 @@ class FeaturedCompaniesView(generics.ListAPIView):
         data = []
         for company in random_companies:
             job_posts = JobPost.objects.filter(
-                company=company, status=True).count()
+                company=company, _is_active=True).count()
             data.append({
                 'id': company.id,
                 'image': company.image,
@@ -54,10 +54,10 @@ class CompanyDetailView(generics.RetrieveUpdateDestroyAPIView):
         # Get 3 random active job posts from this company
         random_jobs = JobPost.objects.filter(
             company=instance,
-            status=True
+            _is_active=True
         ).order_by('?')[:3].values(
             'id', 'title', 'description', 'type',
-            'salary_range', 'created_at'
+            'salary_range', 'created_at',
         )
 
         # Add user and jobs data to response

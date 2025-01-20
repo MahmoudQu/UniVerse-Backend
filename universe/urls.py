@@ -17,4 +17,6 @@ urlpatterns = [
     path('api/', include('apps.educations.urls')),
     path('api/', include('apps.experiences.urls')),
     path('api/', include('apps.resumes.urls')),
+    path('api/', include('apps.admins.urls')),
+    path('api/', include('apps.pending_signup_requests.urls')),
 ]

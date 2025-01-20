@@ -43,16 +43,15 @@ class ResumeRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
             serializer.save()
 
     def perform_destroy(self, instance):
-        # Delete the file from Cloudinary
-        cloudinary.uploader.destroy(
-            instance.file_name.split("/")[-1].split(".")[0])
-        instance.delete()
+        instance.status = False
+        instance.save()
 
 
 class StudentResumesView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ResumeSerializer
 
+
     def get_queryset(self):
         student_id = self.kwargs['student_id']
-        return Resume.objects.filter(student_id=student_id)
+        return Resume.objects.filter(student_id=student_id, status=True)

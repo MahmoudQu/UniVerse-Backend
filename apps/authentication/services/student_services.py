@@ -21,7 +21,7 @@ def handle_student_signup(request):
         user.save()
         send_email_to_user(user.email, "OTP Verification",
                            f"Please verify your email with this OTP: {user.otp}")
-        return Response({"message": "OTP generated. Please verify."}, status=status.HTTP_201_CREATED)
+        return Response({"detail": "OTP generated. Please verify."}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -33,7 +33,7 @@ def handle_student_otp_verification(request):
     if verify_otp(user, otp):
         profile.is_verified = True
         profile.save()
-        return Response({"message": "Email verified successfully."}, status=status.HTTP_200_OK)
+        return Response({"detail": "Email verified successfully."}, status=status.HTTP_200_OK)
     return Response({"detail": "Invalid or expired OTP."}, status=status.HTTP_400_BAD_REQUEST)
 
 

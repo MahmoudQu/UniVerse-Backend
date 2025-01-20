@@ -8,6 +8,7 @@ from apps.accounts.models import CustomUser
 class Company(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, default='Unknown')
+    about = models.TextField(null=True, blank=True)
     is_verified = models.BooleanField(default=False)
     image = models.TextField(null=True, blank=True)
     industry = models.CharField(max_length=100, null=True, blank=True)
@@ -17,6 +18,11 @@ class Company(models.Model):
     website_url = models.URLField(max_length=255, null=True, blank=True)
     city = models.CharField(max_length=40, null=True, blank=True)
     country = models.CharField(max_length=40, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+    status = models.BooleanField(default=True)
+    proof_document = models.URLField(null=True, blank=True)
+    is_accepted = models.BooleanField(default=False)
 
     def generate_otp(self):
         self.user.otp = str(uuid.uuid4().int)[:6]

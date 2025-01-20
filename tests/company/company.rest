@@ -1,4 +1,5 @@
-### Get Featured Jobs
 
-GET http://127.0.0.1:8000/api/companies/1/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1ODU1NzA5LCJpYXQiOjE3MzU4MzM1OTYsImp0aSI6ImYwNGRmMzkyM2E0YjQ1YWZhZDA3ZDNhYWJlNmFmZWUwIiwidXNlcl9pZCI6MX0.xofNKPZf5-G9M9wuP_j0OJL2eZRTpITQQm429FglRbo
+
+### Get all companies
+GET http://127.0.0.1:8000/api/companies/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM2NTYwMjEyLCJpYXQiOjE3MzYwMTg1MjQsImp0aSI6IjMyYmM5NDBlM2MwMzQzYWU5OTk5MGQ3ZjI1NjAxMjk5IiwidXNlcl9pZCI6Mn0.FSFIm7Yve_u9W6JCcHVcGCUQMRIGUnWKP3ToDyYxwfY

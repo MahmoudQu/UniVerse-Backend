@@ -32,4 +32,4 @@ def request_new_otp(user):
 
     # Send the OTP
     send_email_to_user(user.email, "OTP Verification", f"Please verify your email with this OTP: {user.otp}")
-    return Response({"message": "A new OTP has been sent to your email."}, status=status.HTTP_200_OK)
+    return Response({"detail": "A new OTP has been sent to your email."}, status=status.HTTP_200_OK)

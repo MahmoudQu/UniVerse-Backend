@@ -11,6 +11,70 @@ from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from django.core.mail import send_mail
 from rest_framework import status
+from rest_framework.exceptions import PermissionDenied
+from django.db.models import Q
+
+
+class JobSearchView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = JobPostSerializer
+
+    def get_queryset(self):
+        queryset = JobPost.objects.all()
+        search_term = self.request.query_params.get('search', None)
+        department_id = self.request.query_params.get('department', None)
+
+        if search_term:
+            queryset = queryset.filter(
+                Q(title__icontains=search_term) |
+                Q(company__name__icontains=search_term)
+            )
+
+        if department_id:
+            queryset = queryset.filter(department_id=department_id)
+
+        return queryset.filter(_is_active=True)
+
+
+class CompanyJobApplicationsView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = ApplicationSerializer
+
+    def get_queryset(self):
+        company = self.request.user.company
+
+        if not company:
+            raise PermissionDenied(
+                "You do not have permission to view these applications.")
+
+        return Application.objects.filter(job_post__company=company)
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        return Response(self.custom_representation(queryset))
+
+    def custom_representation(self, queryset):
+        data = []
+        for application in queryset:
+            student = application.student
+            student_data = {
+                'image': student.image,
+                'first_name': student.first_name,
+                'last_name': student.last_name,
+                'university': student.university.name,
+                'department': student.department.name,
+                'phone': student.phone,
+                'id': student.id,
+                'email': student.user.email,
+            }
+            data.append({
+                'id': application.id,
+                'status': application.status,
+                'student': student_data,
+                'job_post': application.job_post.title,
+                'resume': application.resume.file_url if application.resume else None
+            })
+        return data
 
 
 class DeleteApplicationView(generics.DestroyAPIView):
@@ -117,21 +181,14 @@ class StudentAppliedJobsView(generics.ListAPIView):
 
 class FeaturedJobsView(generics.ListAPIView):
     serializer_class = JobPostSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        # Get the logged-in user
-        user = self.request.user
-
-        # Ensure the user is a student
-        student = get_object_or_404(Student, user=user)
-        department = student.department
-
-        if department:
-            # Return jobs matching the student's department
-            return JobPost.objects.filter(department=department).order_by('?')[:9]
-        else:
-            # Return 9 random jobs from different departments
-            return JobPost.objects.order_by('?')[:9]
+        student = get_object_or_404(Student, user=self.request.user)
+        return JobPost.objects.filter(
+            department=student.department,
+            _is_active=True
+        ).order_by('?')[:9]
 
 
 class JobPostListCreateView(generics.ListCreateAPIView):

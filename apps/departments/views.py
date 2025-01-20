@@ -24,4 +24,4 @@ class DepartmentJobsView(generics.ListAPIView):
 
     def get_queryset(self):
         department_id = self.kwargs['department_id']
-        return JobPost.objects.filter(department_id=department_id, status=True)
+        return JobPost.objects.filter(department_id=department_id, _is_active=True)

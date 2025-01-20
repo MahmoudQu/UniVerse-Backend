@@ -5,7 +5,6 @@ import uuid
 from apps.accounts.models import CustomUser
 from apps.universities.models import University
 from apps.departments.models import Department
-from apps.skills.models import Skill  # Assuming you have an app for skills
 
 
 class Student(models.Model):
@@ -24,7 +23,11 @@ class Student(models.Model):
     github = models.URLField(max_length=255, null=True, blank=True)
     linkedin = models.URLField(max_length=255, null=True, blank=True)
     portfolio = models.URLField(max_length=255, null=True, blank=True)
-    skills = models.TextField(null=True, blank=True, default="")
+    skills = models.JSONField(null=True, blank=True, default=list)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True)
+    status = models.BooleanField(default=True)
+    is_accepted = models.BooleanField(default=True)
 
     def generate_otp(self):
         self.user.otp = str(uuid.uuid4().int)[:6]

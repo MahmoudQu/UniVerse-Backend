@@ -18,6 +18,29 @@ from apps.awards.models import Award
 from apps.educations.serializers import EducationSerializer
 from apps.experiences.serializers import ExperienceSerializer
 from apps.awards.serializers import AwardSerializer
+from django.db.models import Q
+
+
+class StudentSearchView(generics.ListAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = StudentSerializer
+
+    def get_queryset(self):
+        queryset = Student.objects.all()
+        search_term = self.request.query_params.get('search', None)
+        department_id = self.request.query_params.get('department', None)
+
+        if search_term:
+            queryset = queryset.filter(
+                Q(first_name__icontains=search_term) |
+                Q(last_name__icontains=search_term) |
+                Q(skills__contains=[search_term])
+            )
+
+        if department_id:
+            queryset = queryset.filter(department_id=department_id)
+
+        return queryset
 
 
 class FeaturedStudentsView(generics.ListAPIView):

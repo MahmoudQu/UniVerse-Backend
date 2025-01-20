@@ -26,7 +26,7 @@ def update_user_email(request):
             user.save()
             send_email_to_user(user.email, "OTP Verification",
                                f"Please verify your email with this OTP: {user.otp}")
-            return Response({"message": "Email updated successfully. Please verify your new email address."}, status=status.HTTP_200_OK)
+            return Response({"detail": "Email updated successfully. Please verify your new email address."}, status=status.HTTP_200_OK)
         else:
             return Response({"error": "Email is required."}, status=status.HTTP_400_BAD_REQUEST)
     else:
@@ -125,7 +125,7 @@ def update_user_image(request):
             user.company.image = image_url
             user.company.save()
 
-        return Response({"message": "User image updated successfully."}, status=status.HTTP_200_OK)
+        return Response({"detail": "User image updated successfully."}, status=status.HTTP_200_OK)
 
     except Exception as e:
         return Response(

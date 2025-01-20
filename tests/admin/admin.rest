@@ -1,0 +1,17 @@
+### Admin Login
+POST http://localhost:8000/api/admins/login/
+Content-Type: application/json
+
+{
+    "email": "admin@admin.com",
+    "password": "admin123"
+}
+
+### Admin Logout
+POST http://localhost:8000/api/admins/logout/
+Content-Type: application/json
+Authorization: Bearer <ACCESS_TOKEN>
+
+{
+    "refresh": "<REFRESH_TOKEN>"
+}

@@ -33,7 +33,7 @@ class JobPostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'description', 'company', 'company_id',
             'department', 'department_id', 'type', 'salary_range',
-            'tags', 'requirements', 'created_at', 'updated_at', 'status'
+            'tags', 'requirements', 'created_at', 'updated_at', 'is_active', 'end_date'
         ]
 
 
@@ -46,7 +46,8 @@ class ApplicationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Application
-        fields = ['id', 'status', 'student', 'job_post', 'resume_id', 'resume']
+        fields = ['id', 'status', 'student', 'job_post',
+                  'resume_id', 'resume', 'is_active']
 
     def create(self, validated_data):
         student = validated_data['student']
@@ -58,12 +59,20 @@ class ApplicationSerializer(serializers.ModelSerializer):
                 {"detail": "You have applied for this job before."})
 
         return super().create(validated_data)
+    
+    def validate(self, data):
+        job_post = data.get('job_post')
+        if job_post and job_post.is_expired():
+            raise serializers.ValidationError(
+                {"detail": "This job posting has expired and is no longer accepting applications."}
+            )
+        return data
 
 
 class SavedJobSerializer(serializers.ModelSerializer):
     class Meta:
         model = SavedJob
-        fields = ['id', 'student', 'job_post']
+        fields = ['id', 'student', 'job_post', 'is_active', 'created_at', 'updated_at']
 
 
 class JobPostWithApplicationSerializer(serializers.ModelSerializer):
@@ -74,7 +83,7 @@ class JobPostWithApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobPost
         fields = ['id', 'title', 'description', 'company', 'department', 'type', 'salary_range',
-                  'tags', 'requirements', 'status', 'created_at', 'updated_at', 'application']
+                  'tags', 'requirements', 'created_at', 'updated_at', 'application', 'is_active']
 
     def get_application(self, obj):
         request = self.context.get('request')

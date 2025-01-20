@@ -25,14 +25,16 @@ class StudentSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
     is_verified = serializers.BooleanField(read_only=True)
     user = serializers.PrimaryKeyRelatedField(read_only=True)
-    skills = CommaSeparatedListField(allow_null=True, required=False)
+    skills = serializers.ListField(
+        child=serializers.CharField(), allow_null=True, required=False)
 
     class Meta:
         model = Student
         fields = [
             'id', 'user', 'first_name', 'last_name', 'email', 'password',
             'is_verified', 'image', 'phone', 'department', 'university',
-            'date_of_birth', 'github', 'linkedin', 'portfolio', 'skills', 'department_id', 'university_id'
+            'date_of_birth', 'github', 'linkedin', 'portfolio', 'skills', 'department_id', 'university_id',
+            'created_at', 'updated_at', 'status'
         ]
 
     def create(self, validated_data):

@@ -48,7 +48,7 @@ class Command(BaseCommand):
             {'name': 'Architecture and Design', 'icon': 'flaticon-vector'},
             {'name': 'Medicine and healthcare', 'icon': 'flaticon-first-aid-kit-1'},
             {'name': 'Arts and Humanities', 'icon': 'flaticon-headhunting'},
-            {'name': 'Law and Sharia', 'icon': 'flaticon-promotion'},
+            {'name': 'English and translation', 'icon': 'flaticon-promotion'},
             {'name': 'Education', 'icon': 'flaticon-notebook'},
             {'name': 'Science', 'icon': 'flaticon-heart'},
             {'name': 'Agriculture', 'icon': 'flaticon-car'},

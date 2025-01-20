@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,18 +39,18 @@ INSTALLED_APPS = [
     'apps.departments',
     'apps.jobs',
     'apps.resumes',
-    'apps.skills',
     'apps.admins',
     'apps.awards',
     'apps.educations',
     'apps.experiences',
+    'apps.pending_signup_requests',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
     'django_seed',
 ]
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=200),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
 }
 
@@ -128,6 +129,12 @@ DATABASES = {
     }
 }
 
+# For deployment
+# DATABASES['default'] = dj_database_url.parse(
+#     'postgresql://universe_cts5_user:Pk65mw5YaQbFaDHLT2tcbPDOWAIQo2uZ@dpg-ctridi23esus73dda6n0-a.oregon-postgres.render.com/universe_cts5'
+# )
+
+# postgresql: //universe_cts5_user:Pk65mw5YaQbFaDHLT2tcbPDOWAIQo2uZ@dpg-ctridi23esus73dda6n0-a.oregon-postgres.render.com/universe_cts5
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

@@ -8,7 +8,8 @@ from .views import (
     StudentRequestNewOTPView,
     StudentUpdateProfileView,
     FeaturedStudentsView,
-    StudentResumeInfoView
+    StudentResumeInfoView,
+    StudentSearchView
 )
 
 urlpatterns = [
@@ -25,4 +26,5 @@ urlpatterns = [
          name='featured_students'),
     path('students/<int:id>/resume_info/',
          StudentResumeInfoView.as_view(), name='student_resume_info'),
+    path('students/search/', StudentSearchView.as_view(), name='student_search'),
 ]

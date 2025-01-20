@@ -4,7 +4,8 @@ from .views import (
     ApplicationListCreateView, ApplicationDetailView,
     SavedJobListCreateView, SavedJobDetailView, CompanyJobPostsView,
     FeaturedJobsView, StudentAppliedJobsView, JobApplicantsView,
-    ApproveApplicationView, RejectApplicationView, DeleteApplicationView
+    ApproveApplicationView, RejectApplicationView, DeleteApplicationView,
+    CompanyJobApplicationsView, JobSearchView
 )
 
 urlpatterns = [
@@ -33,4 +34,7 @@ urlpatterns = [
          RejectApplicationView.as_view(), name='reject_application'),
     path('applications/<int:pk>/delete/',
          DeleteApplicationView.as_view(), name='delete_application'),
+    path('companies/<int:company_id>/applications/',
+         CompanyJobApplicationsView.as_view(), name='company_job_applications'),
+    path('job_posts/search/', JobSearchView.as_view(), name='job_search'),
 ]

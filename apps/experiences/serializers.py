@@ -7,7 +7,7 @@ class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
         fields = ['id', 'position', 'company', 'description', 'start_date',
-                  'end_date', 'student', 'created_at', 'updated_at', 'present']
+                  'end_date', 'student', 'created_at', 'updated_at', 'present', 'status']
 
     def validate(self, data):
         end_date = data.get('end_date')
