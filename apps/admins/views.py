@@ -35,6 +35,7 @@ class AdminLoginView(APIView):
             status=status.HTTP_401_UNAUTHORIZED
         )
 
+# Admin logout
 class AdminLogoutView(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
